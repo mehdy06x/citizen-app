@@ -121,5 +121,4 @@ function FormRegister({route, method}) {
     </>
     )
 }
-
 export default FormRegister;

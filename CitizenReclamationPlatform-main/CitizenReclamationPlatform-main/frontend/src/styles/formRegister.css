@@ -1,7 +1,7 @@
 body{
-  background-image: url("../assets/backwhite.png");
-  background-size: cover;
-  
+  background-image: url("../assets/backBleu.png");
+  background-size: cover;  
+
 
 }
 .rmain-container{
@@ -39,7 +39,7 @@ body{
   display: flex;
   
   flex-direction: column;
-  background-image: url("../assets/backBleu.png");
+  background-image: url("../assets/backwhite.png");
   background-size: cover;
   border-radius: 0 50px 50px 0;
   
