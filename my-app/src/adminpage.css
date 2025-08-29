@@ -1,0 +1,82 @@
+  .filter-tout,
+  .filter-encours,
+  .filter-resolue,
+  .filter-pasencore {
+    
+            background-color: #58A0C8;
+            color: white;
+            border: none;
+            border-radius: 12px 0 0 12px;
+            font-size: 16px;
+            height: 36px;
+            margin-left: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+}
+.filter-tout{
+  margin-left: 30px;
+}
+.filter-encours {
+             border-radius: 0;
+              border-left: 1px solid #fff; 
+            }
+.filter-resolue { 
+  border-radius: 0;
+  border-left: 1px solid #fff; 
+}
+.filter-pasencore { 
+  border-radius: 0 12px 12px 0; border-left: 1px solid #fff;
+ }
+.filter-tout.active, .filter-encours.active, .filter-resolue.active, .filter-pasencore.active {
+background-color: #217a2c;
+color: #fff;
+}
+.filter-encours.active { 
+  background-color: #FFD580;
+  color: #b26a00;
+ }
+.filter-resolue.active { 
+  background-color: #B1FAB3;
+  color: #217a2c;
+ }
+.filter-pasencore.active {
+   background-color: #FFB3B3;
+    color: #a80000; 
+ }
+.filter-reports{
+  gap: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+.show-all-reports-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+.show-all-reports-button{
+  padding: '10px 24px';
+  border-Radius: '8px';
+  background: #58A0C8;
+  color: white;
+  border: none;
+  justify-content: center;
+  font-Size: '16px';
+  cursor: 'pointer';
+}
+
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+} 
+
+.admin-stats { width: 100%; max-width: 980px; }
+.admin-stats h2 { margin: 0 0 12px 0; }
+.stat-cards { display: flex; gap: 12px; flex-wrap: wrap; }
+.stat-card { background: #fff; border-radius: 12px; padding: 16px; flex: 1 1 200px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); text-align: center; }
+.stat-number { font-size: 28px; font-weight: 700; color: #16324c; }
+.stat-label { font-size: 13px; color: #516a76; margin-top: 6px; }
+.admin-stats .primary { margin-top: 12px; background: #58A0C8; color: #fff; padding: 10px 18px; border: none; border-radius: 8px; cursor: pointer; }

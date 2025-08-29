@@ -1,0 +1,45 @@
+<!-- Copied Flexy index for admin dashboard (served at /flexy/index.html) -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flexy Admin (embedded)</title>
+  <link rel="shortcut icon" type="image/png" href="/flexy/assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="/flexy/assets/css/styles.min.css" />
+</head>
+
+<body>
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+    <div class="container-fluid">
+      <h1>Admin Dashboard (Flexy)</h1>
+      <div id="sales-overview"></div>
+      <div id="admin-stats"></div>
+    </div>
+
+  </div>
+
+  <script src="/flexy/assets/js/dashboard.js"></script>
+  <script src="/flexy/assets/js/admin-stats.js"></script>
+</body>
+
+</html>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/flexy/assets/js/admin-stats.js"></script>
+    <script src="/flexy/assets/js/dashboard.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        var btn = document.getElementById('flexy-view-all');
+        if (btn) btn.addEventListener('click', function(){
+          try { window.parent.location.href = '/admin/reports'; } catch(e) { window.location.href = '/admin/reports'; }
+        });
+      });
+    </script>
+  </body>
+</html>

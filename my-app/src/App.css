@@ -1,0 +1,199 @@
+
+body{
+  margin: 0;
+  background-image: url("images/backBleu.png");
+
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.headerstart{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  width: 100%;
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  text-decoration-color: #58A0C8;
+}
+.headerstart a {
+text-decoration: none;
+color :#58A0C8;
+
+
+}
+.headerstart a:hover {
+  text-decoration: underline;
+  /* Optional hover effect */
+}
+
+.headerbar{
+  background-color: #2D2B2B;
+  width: 100%;
+  height: 50px;
+  max-width: 100%; 
+}
+.footer-l{
+  background-color: #2D2B2B;
+}
+
+.footer-l {
+  padding: 20px 40px;
+  color: white;
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.footer-l footer {
+  display: flex;       /* Side-by-side layout */
+  gap: 130px;      
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  height: 100px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-right: 100px;
+  margin-bottom: 50px;
+  /* Space between columns */
+}
+
+.footer-column h4 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  width: 100%;
+}
+
+.footer-column a {
+  display: block;       /* Each link on its own line */
+  color: white;
+  text-decoration: none;
+  margin-bottom: 6px;
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+  /* Optional hover effect */
+}
+
+.footer-column p {
+  margin: 5px 0;
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.footer-column p a {
+  color: white;
+  text-decoration: none;
+  font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.footer-column p a:hover {
+  text-decoration: underline;
+}
+
+button{
+  border-radius: 50px;
+  padding:5px 20px;
+  border: 1px ;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .02s ease;
+}
+
+.Acceuilbtn button{
+  background-color: white;
+  color: #58A0C8;
+  border-color: #58A0C8;
+}
+.Connectbtn button{
+  background-color: white;
+  color:#2D2B2B;
+  border-color: white;
+}
+.Reclamerbtn button{
+  background-color: #58A0C8;
+  color: white;
+  border-color: #58A0C8;
+}
+.Acceuilbtn button:hover,
+.Connecttbtn button:hover{
+  background-color: #E6F3FB;
+}
+.Reclamerbtn button:hover{
+  filter: brightness(0.95);
+}
+.alignbtns{
+  justify-content: flex-end;/*start*/
+  gap: 20px;
+  display: flex;
+}
+.Connectbtn{
+  margin-left: auto;
+}
+
+/*
+@media (max-width: 640px) {
+  .sectionacceuil {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .Connectbtn {
+    margin-left: 0;
+  }
+}*/
+/* Accueil section layout */
+
+.sectionacceuil{
+  flex-direction: row;
+  display:flex;
+  gap: 16px;
+  padding: 24px clamp(12px, 5vw, 60px);
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 50px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px){
+  .headerstart{
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 12px;
+    font-size: 13px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .footer-l footer{
+    gap: 32px;
+    height: auto;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 640px){
+  .headerstart{
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+  
+  
+ 
+  button{
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+  .footer-l{
+    padding: 16px;
+  }
+  .footer-l footer{
+    flex-direction: row;
+    gap: 12px;
+  }
+}

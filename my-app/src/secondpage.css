@@ -1,0 +1,172 @@
+
+
+body {
+  background-image: url("./images/backBleu.png");
+}
+
+.aligning-buttons {
+  display: flex;
+  margin-bottom: 0;
+}
+.recbtn {
+  padding-top: 24px;
+  padding-left: clamp(12px, 6vw, 70px);
+  flex:2;
+}
+
+.recbtn button{
+  color:#58A0C8;
+  border : 2px solid;
+    border-color:#58A0C8 ;
+}
+.nrecltitle h4{
+  font-size: clamp(22px, 4vw, 36px);
+  color:#58A0C8;
+  margin-left: clamp(8px, 4vw, 46px);
+  margin-bottom: 0;
+}
+.nrecltitle p{
+  font-size: clamp(14px, 2.5vw, 18px);
+  margin-top: 0;
+  margin-left: clamp(8px, 4vw, 46px);
+}
+.nreclbtn button{
+  background-color: #58A0C8;
+  color: white;
+  margin-top: 60px;
+  margin-right: 30px; 
+  width: 170px; 
+  font-size: 13px;
+}
+.background{
+  background-color: white;
+  border-radius: 27px 27px 0 0;
+  margin-left: 400px;
+  margin-right: 400px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  margin-bottom: 70px;
+}
+.again{
+  display: flex;
+  justify-content:space-between;
+
+}
+.terc{
+  display: flex;
+  justify-content: center;
+  background-color:#58A0C866;
+  margin-left: 46px;
+  border-radius: 10px;
+  width:300px;
+  height: 37px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 0px;
+}
+.terc button{
+  background-color: #58A0C8;
+  color: white;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-right:8px;
+  height: 36px;
+  justify-content: center;
+
+}
+.ck button{
+background: #58A0C859;
+}
+
+/*this part is the lamptout component styling */
+
+.bgcolor{
+  background-color: #F5F5F5;  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height:120px;
+  padding-right:0 ;
+  padding-left: 0;
+  margin-right: clamp(6px, 3vw, 20px);
+  margin-left: clamp(6px, 6vw, 40px);
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.bold{
+  font-weight: bold; 
+}
+
+.lampbutton{
+  margin-left: clamp(6px, 4vw, 25px);
+  display: flex;
+  justify-content:space-between; 
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+}
+/* Responsive breakpoints */
+@media (max-width: 900px) {
+  .background {
+    margin-left: 70px;
+    margin-right: 70px;
+  }
+  .bgcolor {
+    margin-left: 26px;
+    margin-right: 26px;
+  }
+  .terc{
+    margin-left: 26px;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .background {
+    margin-left: 2vw;
+    margin-right: 2vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  .bgcolor {
+    margin-left: 2vw;
+    margin-right: 2vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+  
+  .nrecltitle h4, .nrecltitle p {
+    margin-left: 2vw;
+  }
+  .lampbutton {
+    margin-left: 2vw;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .aligning-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+.lampbutton h4{
+  font-size: 20px;
+  margin-bottom: 2px;
+  margin-top: 14px;
+}
+.lampbutton button{
+  height: 26px;
+  margin-top: 14px;
+  margin-right:20px ;
+  background-color: #B1FAB3;
+  font-family: Gulzar ;
+  font-weight: 400;
+}
+.lamptout p{
+  justify-content: flex-start;
+  margin-left: 26px;
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+  
+

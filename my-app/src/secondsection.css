@@ -1,0 +1,157 @@
+.sdsection{
+    background-image:url("images/white.png"); 
+}
+
+.rectangle{
+    width: 220px;
+    height: 160px;
+    border-radius: 10%;
+    background-color: #58A0C8;
+    text-align: center;
+}
+
+.rectangle h3{
+    color: #2D2B2B;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-top: 30px;
+
+}
+.rectangle p{
+    color: white;
+    margin-top: 2px;
+    font-weight: 600;
+    text-align: center;
+    margin-left: 15px;
+    margin-right:10px ;
+}
+.rectangle h3,p{
+    justify-content: center;
+    display: flex;
+
+}
+.alignrec{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 20px);
+}
+
+.lamp{
+    width: clamp(240px, 32vw, 300px);
+    height: 270px;
+    border-radius: 10%;
+    background-color: #58A0C8;
+    text-align: center;
+    padding-top:20px ;
+
+
+
+}
+.sublamp , .tbtn {
+    display: flex;
+justify-content: space-around;    
+
+} 
+.sublamp  h4{
+    color: white;
+    font-size: 18px;
+}
+.tbtn button{
+    background-color: #B1FAB3;
+    width: 70px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    
+
+    
+}
+.update{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(12px, 4vw, 30px);
+    
+}
+.text{
+    color:white;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+    margin-left: 21px;
+    margin-right: 21px;
+
+
+
+}
+.dbtn{
+    padding-top: 20px;
+    justify-content: center;
+
+
+}
+.Vp  button{
+    width: 180px;
+    background-color: #58A0C8;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+
+
+
+}
+.Vp{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+
+    
+}
+.spcbtns{
+    display: flex;
+    justify-content: center;
+    margin-top: 1px;
+    margin-bottom: 20px;
+    gap : 2px;
+}
+
+.cn Button{
+    background:none  ;
+    color:white;
+    border-radius:50px 0 0 50px;
+    border : 2px solid;
+    border-color:#58A0C8 ;
+    padding: 3px 10px ;
+}
+.re Button{   
+    margin:auto;
+    background-color: #58A0C8;
+    color: white;
+    border-radius: 0px 50px 50px 0;
+    border : 2px solid;
+    border-color:#58A0C8 ;
+    padding: 3px 10px ;
+}
+
+.pr{
+    padding-left: 0px;
+    justify-content: flex-start;
+    color: white; 
+    display: flex;
+}
+.mrg  {
+    padding: 0 clamp(12px, 6vw, 70px) 0 clamp(12px, 6vw, 70px);
+}
+
+.mrg h5{
+    margin-bottom: 0;
+}
+.mrg p{
+    margin-top: 0;
+}

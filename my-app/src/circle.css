@@ -1,0 +1,91 @@
+.secondsection h2{
+    font-weight: 600;
+    font-size: 14px;
+    color:#58A0C8;
+    /* font-size: 42px;
+    color: #2D2B2B;
+    display: flex;*/
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 0%;
+    text-align: center;
+}
+.secondsection p{    
+    font-size : 14px;
+    margin-top: 0px;
+    font-weight: 500;
+    margin-left: 55px;
+    justify-content: center;
+    text-align: center;
+}
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #58A0C8;
+    justify-content: center;
+    display: flex;
+    margin-left: 250px;
+  }
+  .circle-icon, .material-symbols-outlined {
+    font-size: 42px;
+    line-height: 1;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .circle-icon-img { width: 32px; height: 32px; object-fit: contain; }
+  .circle .material-symbols-outlined { color: #000000; display:inline-flex; align-items:center; justify-content:center; }
+  .secondsection{
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px ;
+}
+
+
+
+
+.demande {
+  display: flex;
+  justify-content: center;
+}
+h5{
+    font-size: 30px;
+   font-weight: 600;    
+}
+.how{
+  color: #58A0C8;
+
+}
+
+.marg  {
+    padding: 20px 70px 0 70px;
+}
+
+/* Breakpoints */
+
+@media (max-width: 1024px) {
+  .demande {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0 40px;
+  }
+  .marg { padding: 20px 40px 0 40px; }
+  .circle { 
+  margin-left: 80px;
+  
+}
+}
+@media (max-width: 640px) {
+  .demande {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .marg { padding: 16px; }
+  .marg h5 { font-size: 24px; }
+  .secondsection { align-items: center; text-align: center; }
+  .circle { margin-left: 0; margin-inline: auto; }
+  .secondsection h2, .secondsection p { margin-left: 0; }
+}
+

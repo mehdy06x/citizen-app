@@ -1,0 +1,42 @@
+// Backup of the original _dashboard1.scss before restore
+// Created by automated assistant
+// Original contents saved below
+// ----------------------------------------------
+// Dashboard1 Style (backup)
+// ----------------------------------------------
+
+.comment-widgets {
+    .comment-row {
+        background: transparent;
+
+        &:hover,
+        &.active {
+            background: rgba(0, 0, 0, 0.025);
+        }
+    }
+}
+
+.comment-text {
+
+    &:hover .comment-footer,
+    &.active .comment-footer {
+        .action-icons {
+            visibility: visible;
+        }
+    }
+}
+
+.comment-footer {
+    .action-icons {
+        visibility: hidden;
+
+        a {
+            color: var(--bs-body-color);
+
+            &:hover,
+            &.active {
+                color: var(--bs-info);
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+/* Styles for MakeReport form — visually match register layout */
+
+
+
+.make-report .mr-root{
+  max-width: 1000px;
+  margin: 30px auto;
+}
+.make-report .reclamations-list{
+  display: none; /* hide the list/header above the form as requested */
+}
+
+.mr-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+}
+.mr-form{
+  padding: 28px 32px;
+  /* fully opaque white card so the blue background shows clearly behind */
+  background: #ffffff;
+}
+.mr-form h2{ margin-top:0; color:#58A0C8; }
+.mr-field{ margin-bottom: 14px; }
+.mr-field label{ display:block; margin-bottom:6px; color:#2D2B2B; font-weight:600; }
+.mr-field input,.mr-field select,.mr-field textarea{
+  width:100%; padding:10px 12px; border:1px solid #DDE7EE; border-radius:8px; font-size:14px; box-sizing:border-box;
+}
+.mr-field textarea{ min-height:100px; resize:vertical; }
+.mr-actions{ display:flex; gap:12px; margin-top:12px; }
+.mr-actions button{ padding:10px 16px; border-radius:20px; border:none; cursor:pointer; }
+.mr-actions .mr-submit{ background:#58A0C8; color:#fff; }
+.mr-actions .mr-reset{ background:#f5f5f5; color:#58A0C8; border:1px solid #58A0C8; }
+.mr-panel{
+  background-image: url('../assets/white.png');
+  background-size: cover;
+  background-position: center;
+  display:flex; align-items:center; justify-content:center; color:#fff;
+}
+.mr-panel .panel-text{ padding:24px; text-align:left; background: #58A0C8; border-radius:12px; }
+.mr-panel .panel-text h3{ margin:0; font-size:28px; line-height:1.1; }
+.mr-panel .panel-text p{ color:#2D2B2B; margin:8px 0 0; opacity:0.95; }
+
+@media (max-width:800px){
+  .mr-container{ grid-template-columns: 1fr; }
+  .mr-panel{ display:none; }
+}
+.rwimg-container{
+	grid-row: 1/1;
+	grid-column: 2/3;
+	display: flex;
+	flex-direction: column;
+	background-image: url("../assets/white.png");
+	background-size: cover;
+	border-radius: 0 50px 50px 0;
+}

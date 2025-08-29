@@ -1,0 +1,14 @@
+.note-container { padding: 10px; margin: 20px 0; border: 1px solid #ccc; border-radius: 5px; }
+.note-title { color: #333; }
+.note-content { color: #666; }
+.note-date { color: #999; font-size: 0.8rem; }
+.delete-button { background-color: #f44336; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+.delete-button:hover { background-color: #d32f2f; }
+.Reclamation-container{border:1px solid #ddd;padding:12px;margin:8px;border-radius:8px}
+.Reclamation-type{font-weight:bold}
+.Reclamation-status{color:green}
+.Reclamation-content{margin-top:6px}
+.delete-button{background:#f55;color:white;border:none;padding:6px;border-radius:6px}
+body{
+  background-image: url("../assets/backBleu.png" );
+}

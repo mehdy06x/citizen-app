@@ -1,0 +1,75 @@
+
+.firstsection{
+    background-color: white;
+    border-radius: 27px 27px 0 0;
+    /* Responsive side margins that grow on large screens and shrink on mobile */
+    margin-left: 320px;
+    margin-right: 320px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.firstsection h5{
+    font-size: clamp(26px, 5vw, 42px);
+    color: #2D2B2B;
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 0%;
+    justify-content: center;
+    
+}
+
+.firstsection p{
+    font-size: clamp(16px, 3vw, 22px);
+    margin-top: 0px;
+    margin-left: clamp(8px, 4vw, 50px);
+}
+.voice{
+    color: #58A0C8 ;
+}
+.specialbtns{
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(24px, 8vw, 100px);
+    margin-bottom: auto;
+    gap : 2px;
+}
+
+.cnt Button{
+    background:none  ;
+    color:#2D2B2B;
+    border-radius:50px 0 0 50px;
+    border : 2px solid;
+    border-color:#58A0C8 ;
+    padding: 3px 10px ;
+}
+
+.rec Button{   
+    margin:auto;
+    background-color: #58A0C8;
+    color: white;
+    border-radius: 0px 50px 50px 0;
+    border : 2px solid;
+    border-color:#58A0C8 ;
+    padding: 3px 10px ;
+}
+@media (max-width: 900px) {
+
+    .firstsection {
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+  
+  
+  
+}
+
+@media (max-width: 600px) {
+    
+  
+}
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+// ----------------------------------------------
+// Dashboard1 Style (restored from original template)
+// ----------------------------------------------
+
+// Top statistics cards
+.stats-widget {
+    .stats-row {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        .stat-card {
+            flex: 1 1 0;
+            background: var(--bs-body-bg);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            .stat-icon {
+                font-size: 1.5rem;
+                color: var(--bs-primary);
+            }
+            .stat-number {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--bs-body-color);
+            }
+            .stat-label {
+                font-size: 0.875rem;
+                color: var(--bs-secondary);
+            }
+        }
+    }
+}
+
+// Comments / activity list
+.comment-widgets {
+    .comment-row {
+        display: flex;
+        gap: 1rem;
+        padding: 0.75rem;
+        border-radius: 0.375rem;
+        transition: background 0.15s ease;
+        background: transparent;
+
+        &:hover,
+        &.active {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .comment-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            img { width: 100%; height: auto; display: block; }
+        }
+
+        .comment-body {
+            flex: 1;
+            .comment-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .comment-author { font-weight: 600; }
+                .comment-time { font-size: 0.8rem; color: var(--bs-secondary); }
+            }
+            .comment-text { margin-top: 0.25rem; color: var(--bs-body-color); }
+            .comment-footer {
+                margin-top: 0.5rem;
+                display:flex;
+                justify-content: space-between;
+                align-items:center;
+
+                .action-icons { visibility: hidden; display:flex; gap:0.5rem; }
+                .meta { font-size: 0.85rem; color: var(--bs-secondary); }
+            }
+        }
+    }
+}
+
+// Reveal action icons on hover/active
+.comment-text {
+    &:hover .comment-footer,
+    &.active .comment-footer {
+        .action-icons { visibility: visible; }
+    }
+}
+
+.comment-footer {
+    .action-icons {
+        visibility: hidden;
+        a { color: var(--bs-body-color); &:hover,&.active{ color: var(--bs-info);} }
+    }
+}
