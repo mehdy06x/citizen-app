@@ -15,10 +15,17 @@ function FormRegister({route, method}) {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+        // basic client-side validation
+        if (!email || !password || !Conpassword) {
+            alert('Please fill all required fields');
+            return;
+        }
+        if (password !== Conpassword) {
+            alert('Passwords do not match');
+            return;
+        }
         setLoading(true);
-
-        e.preventDefault()
-
         try{
             const res = await api.post(route, {
                 username: email,
@@ -26,11 +33,25 @@ function FormRegister({route, method}) {
                 email: email,
                 password_confirmation: Conpassword,
                 first_name: firstName,
-                last_name:lastName})
+                last_name: lastName,
+                phone_number: phoneNum
+            })
+            // show success and navigate to login
             navigate("/connect");
-            
         }catch (error) {
-            alert(error)
+            // axios error: provide more detail to help debugging
+            if (error.response) {
+                // server sent a response (likely validation error)
+                try {
+                    const data = error.response.data;
+                    alert('Register failed: ' + (typeof data === 'object' ? JSON.stringify(data) : String(data)));
+                } catch (e) {
+                    alert('Register failed: ' + error.response.statusText || error.message);
+                }
+            } else {
+                // network or other error
+                alert('Register error: ' + (error.message || String(error)));
+            }
         }finally {
             setLoading(false);
         }
@@ -42,10 +63,12 @@ function FormRegister({route, method}) {
       
         <div className="rform-container">
           <h1 className="rtitle">Créer un compte</h1>
-          <form  onSubmit={handleSubmit}>
+          <form autoComplete="off" onSubmit={handleSubmit}>
                         <p className="rform-label">Prenom</p>
                         <input 
                         className="rform-input"
+                        name="first_name"
+                        autoComplete="given-name"
                         type="text"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -55,6 +78,8 @@ function FormRegister({route, method}) {
                         <p className="rform-label">Nom</p>
                         <input 
                         className="rform-input"
+                        name="last_name"
+                        autoComplete="family-name"
                         type="text"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
@@ -64,6 +89,8 @@ function FormRegister({route, method}) {
                         <p className="rform-label">Email:</p>
                         <input 
                         className="rform-input"
+                        name="email"
+                        autoComplete="email"
                         type="email"
                         value={email}
                         onChange={(e) => setemail(e.target.value)}
@@ -73,6 +100,8 @@ function FormRegister({route, method}) {
                         <p className="rform-label">Numero Téléphone:</p>
                         <input 
                         className="rform-input"
+                        name="phone_number"
+                        autoComplete="tel"
                         type="tel"
                         value={phoneNum}
                         onChange={(e) => setphoneNum(e.target.value)}
@@ -82,6 +111,8 @@ function FormRegister({route, method}) {
                         <p className="rform-label">Password:</p>
                         <input 
                         className="rform-input"
+                        name="password"
+                        autoComplete="new-password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -91,6 +122,8 @@ function FormRegister({route, method}) {
                         <p className="rform-label">Confirm Password:</p>
                         <input 
                         className="rform-input"
+                        name="password_confirmation"
+                        autoComplete="new-password"
                         type="password"
                         value = {Conpassword}
                         onChange={(e) => setConPassword(e.target.value)}
@@ -99,15 +132,15 @@ function FormRegister({route, method}) {
                         />
                         
 
-          </form>
                         <div className="rbuttons">
-                        <button className="rcreate-button" onClick={handleSubmit}>
-                            Creer mon compte
+                        <button type="submit" className="rcreate-button" disabled={loading}>
+                            {loading ? "Envoi..." : "Creer mon compte"}
                         </button>
-                        <button className="rhave-button" onClick={() => navigate("/connect")} >
+                        <button type="button" className="rhave-button" onClick={() => navigate("/connect")} >
                             j'ai un compte
                         </button>
                         </div>
+          </form>
         </div>
         <div className="rimg-container">
           <p className="rimg-text-blue">Votre Voix,</p>

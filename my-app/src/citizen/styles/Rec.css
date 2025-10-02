@@ -7,7 +7,17 @@
 .Reclamation-container{border:1px solid #ddd;padding:12px;margin:8px;border-radius:8px}
 .Reclamation-type{font-weight:bold}
 .Reclamation-status{color:green}
+.Reclamation-photo{display:block; width:120px; height:80px; object-fit:cover; margin:8px 0; border-radius:6px}
 .Reclamation-content{margin-top:6px}
+
+/* Image preview modal */
+.image-preview-overlay{
+  position:fixed; inset:0; background: rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:9999;
+}
+.image-preview-card{ position:relative; max-width:90%; max-height:90%; background:transparent; border-radius:8px; }
+.image-preview-img{ display:block; max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,0.4); }
+.image-preview-close{ position:absolute; right:-8px; top:-8px; background:#fff; border-radius:50%; width:32px; height:32px; border:none; font-size:20px; cursor:pointer; }
+.Reclamation-photo{ cursor:pointer; }
 .delete-button{background:#f55;color:white;border:none;padding:6px;border-radius:6px}
 body{
   background-image: url("../assets/backBleu.png" );

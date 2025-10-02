@@ -71,12 +71,381 @@ color: #fff;
   flex-direction: column;
   align-items: center;
   padding: 24px;
-} 
+  overflow-x: hidden; /* prevent page horizontal scroll */
+  width: 100%;
+  box-sizing: border-box;
+}
 
-.admin-stats { width: 100%; max-width: 980px; }
+/* centered admin content with a wider max width */
+.admin-stats { width: 100%; max-width: none; margin: 0 auto; padding: 28px; box-sizing: border-box; }
 .admin-stats h2 { margin: 0 0 12px 0; }
 .stat-cards { display: flex; gap: 12px; flex-wrap: wrap; }
 .stat-card { background: #fff; border-radius: 12px; padding: 16px; flex: 1 1 200px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); text-align: center; }
 .stat-number { font-size: 28px; font-weight: 700; color: #16324c; }
 .stat-label { font-size: 13px; color: #516a76; margin-top: 6px; }
 .admin-stats .primary { margin-top: 12px; background: #58A0C8; color: #fff; padding: 10px 18px; border: none; border-radius: 8px; cursor: pointer; }
+
+/* Custom logout button for admin page */
+.admin-logout-btn {
+  background: #2196F3; /* simple blue */
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  margin-right: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(33,150,243,0.18);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+.admin-logout-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(25,118,210,0.18); background: #1976D2; }
+.admin-logout-btn:active { transform: translateY(0); opacity: 0.95; }
+
+/* alias class used by AuthButton */
+.auth-logout-button {
+  background: #2196F3; /* simple blue */
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  margin-right: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(33,150,243,0.18);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+.auth-logout-button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(25,118,210,0.18); background: #1976D2; }
+.auth-logout-button:active { transform: translateY(0); opacity: 0.95; }
+
+/* Users table styles */
+
+.users-table {
+  background: white;
+  border-radius: 12px;
+  overflow: visible; /* allow internal wrapping but prevent page-level overflow via parent */
+  box-shadow: 0 8px 28px rgba(9,30,66,0.08);
+  padding: 32px; /* more breathing room */
+  margin: 12px 12px 0 12px; /* small side gutters instead of centering with fixed max-width */
+  width: calc(100% - 24px); /* fill the inner page area while keeping gutters */
+  max-width: 1600px; /* optional cap for very large screens */
+  box-sizing: border-box;
+}
+
+/* Do not force horizontal scrolling; allow the table to resize/wrap */
+.users-table { overflow-x: visible; }
+
+.users-table .table-body {
+  max-height: 520px;
+  overflow: auto; /* allow vertical scrolling if many users */
+}
+
+/* Users list hero and search */
+.users-hero {
+  position: relative;
+  display: block;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 18px 16px;
+  background: linear-gradient(180deg,#fbfdff,#f6fbff);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(9,30,66,0.04);
+}
+.users-hero h1 { margin: 0; font-size: 26px; }
+.users-hero .muted { margin: 6px 0 0 0; color: #6b7785; }
+.user-search {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.1);
+  width: min(820px, 92%);
+  max-width: 880px;
+  box-shadow: 0 8px 26px rgba(16,24,40,0.08);
+  font-size: 15px;
+}
+
+/* admin-specific override for pages that also use a generic .background elsewhere */
+.admin-background {
+  background: transparent; /* keep the page bg, but let .users-table be the visible white card */
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make the users-table expand to the full inner page width (no large side gutters) */
+.admin-stats .users-table {
+  margin: 0;
+  width: 100%;
+  padding: 36px;
+}
+
+/* Search on its own row inside users-hero */
+.users-hero-top {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+/* Right aligned action buttons sit below the search */
+.users-hero-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Avatar cell in users table */
+.table-row .avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#58A0C8,#2D9CDB);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+.table-row .table-cell:first-child { display: flex; align-items: center; gap: 12px; }
+
+/* ID cell: separate the avatar from the numeric id with a bit more spacing */
+.id-cell { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.id-cell .id-value { display: inline-block; margin-left: 4px; font-weight: 600; color: #16324c; }
+
+/* Center the header label for the ID column */
+.table-header .table-row > .table-cell:nth-child(2) { display: flex; align-items: center; justify-content: center; }
+
+.table-header {
+  background: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-row {
+  display: grid;
+  /* Use flexible fractions and percentages to avoid fixed widths that trigger horizontal scroll */
+  grid-template-columns: 48px 80px minmax(140px, 1fr) minmax(220px, 2.2fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(100px, 0.9fr) minmax(100px, 0.9fr);
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f2f5;
+  align-items: center;
+  font-size: 15px; /* slightly smaller for dense tables */
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.table-row:hover {
+  background: #f8f9fa;
+}
+
+.table-cell {
+  padding: 6px 0;
+  word-break: break-word;
+  white-space: normal; /* allow wrapping to avoid horizontal overflow */
+  overflow-wrap: anywhere;
+  text-overflow: unset;
+}
+
+.table-header .table-row {
+  background: transparent;
+}
+
+.table-header .table-row:hover {
+  background: transparent;
+}
+
+.secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.secondary:hover {
+  background: #5a6268;
+}
+
+/* Ensure both buttons in admin dashboard have same height and alignment */
+.admin-stats button.primary,
+.admin-stats button.secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 40px !important;
+  padding: 8px 18px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+
+/* remove any extra top-offset previously applied to primary so both buttons align */
+.admin-stats .primary { margin-top: 0 !important; }
+
+/* Button row wrapper to force exact matching heights */
+.admin-button-row {
+  display: flex !important;
+  gap: 14px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 40px !important; /* defines the row height */
+}
+.admin-button-row button {
+  height: 100% !important; /* buttons fill the row height */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 18px !important; /* vertical padding handled by height */
+}
+
+/* prominent delete button on lampadaire (admin) */
+.lamptout { position: relative; }
+.delete-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: linear-gradient(180deg,#e74c3c,#c0392b); /* vivid red */
+  border: 3px solid rgba(255,255,255,0.9);
+  box-shadow: 0 12px 28px rgba(192,57,43,0.28);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  z-index: 40;
+}
+.delete-btn:hover { transform: translateY(-3px); background: linear-gradient(180deg,#ff6763,#e74c3c); box-shadow: 0 16px 36px rgba(192,57,43,0.32); }
+.delete-btn:disabled { opacity: 0.8; cursor: default; transform: none; }
+
+/* small action buttons used in tables */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  height: 34px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap; /* keep the text in one line */
+  min-width: 68px; /* slightly smaller but prevents wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+.action-btn:hover { box-shadow: 0 6px 14px rgba(16,24,40,0.06); transform: translateY(-2px); }
+.action-btn.primary { background: linear-gradient(180deg,#58A0C8,#2D9CDB); color: #fff; border: none; }
+.action-btn.danger { background: linear-gradient(180deg,#ff6b6b,#e74c3c); color: #fff; border: none; }
+.action-btn.ghost { background: transparent; border: 1px solid rgba(0,0,0,0.06); color: #16324c; }
+
+/* Slightly smaller details button */
+.details-btn { height: 30px; padding: 4px 8px; min-width: 64px; }
+
+/* assign modal button tweaks */
+.agent-select-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.agent-select-btn.selected { box-shadow: 0 8px 18px rgba(8,20,40,0.06); transform: translateY(-2px); }
+.agent-select-btn.assigned { background: linear-gradient(180deg,#B1FAB3,#9EE6A8); color: #1f7a2a; border: none; }
+
+/* main assign button styles */
+.assign-main-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #58A0C8;
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  margin-left: 26px; /* nudge further to the right */
+}
+.assign-main-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(45,156,219,0.12); }
+.assign-main-btn.assigned { background: linear-gradient(180deg,#ffb74d,#ff9800); color: #ffffff; }
+
+/* confirmation modal used across admin pages */
+.confirm-overlay {
+  position: fixed; left:0; top:0; right:0; bottom:0; background: rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; z-index:10000;
+}
+.confirm-box {
+  width: 92%; max-width: 420px; background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 18px 48px rgba(9,30,66,0.18);
+}
+.confirm-actions { display:flex; gap:10px; justify-content:flex-end; margin-top: 12px; }
+
+/* action buttons cell in table rows */
+.actions-cell { display: flex; gap: 8px; align-items: center; justify-content: flex-start; }
+
+@media (max-width: 768px) {
+  .actions-cell { flex-wrap: nowrap; gap: 8px; }
+  .actions-cell .action-btn { flex: 0 0 auto; }
+}
+
+@media (max-width: 768px) {
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .table-cell::before {
+    content: attr(data-label) ': ';
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+  }
+  .table-header {
+    display: none;
+  }
+}
+
+/* medium screens: reduce email min so no horizontal scroll */
+@media (max-width: 1100px) {
+  .table-row {
+    grid-template-columns: 40px 64px 1fr minmax(160px, 1.6fr) minmax(100px, 0.9fr) minmax(100px, 0.9fr) minmax(90px, 0.8fr) minmax(90px, 0.8fr);
+  }
+  .admin-stats { max-width: calc(100% - 24px); padding: 18px; }
+  .users-hero { padding: 14px; }
+  .user-search { width: min(680px, 92%); }
+}
+
+/* Ensure the page itself never shows horizontal scrollbars from children */
+html, body, #root {
+  overflow-x: hidden !important;
+}
+
+/* Assign modal styling (handcrafted, subtle, not 'AI') */
+.assign-overlay {
+  position: fixed; left:0; top:0; right:0; bottom:0; background: rgba(10,12,15,0.38); display:flex; align-items:center; justify-content:center; z-index:10000;
+}
+.assign-box {
+  width: 420px; max-width: calc(100% - 32px); background: #ffffff; border-radius: 12px; padding: 16px; box-shadow: 0 14px 40px rgba(16,24,40,0.12); color: #17202a;
+}
+.assign-box h4 { margin: 0 0 8px 0; font-size: 18px; }
+.assign-list { list-style: none; padding: 0; margin: 0; max-height: 56vh; overflow: auto; }
+.assign-list li { padding: 10px 12px; border-bottom: 1px solid #f1f3f5; display:flex; justify-content:space-between; align-items:center; gap: 12px; }
+.assign-list li:last-child { border-bottom: none; }
+.agent-meta { display:flex; flex-direction:column; gap:2px; }
+.agent-meta strong { font-size: 14px; color: #0f1720; }
+.agent-meta small { color: #6b7280; font-size: 12px; }
+.agent-actions { display:flex; gap:8px; align-items:center; }
+.agent-select-btn { padding:6px 10px; border-radius:8px; border:1px solid #dfe6ea; background: #ffffff; cursor:pointer; color:#16324c; font-weight:600; }
+.agent-select-btn.selected { background: #f0f7fb; border-color: #bfe6fb; }
+.agent-assign-btn { padding:6px 10px; border-radius:8px; border: none; background: #58A0C8; color: #fff; cursor: pointer; font-weight:700; }
+.agent-assign-btn:hover { filter: brightness(0.98); }
+.agent-assign-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.assign-footer { display:flex; justify-content:flex-end; gap:8px; margin-top:12px; }
+.assign-close-btn { padding:6px 10px; border-radius:8px; border:1px solid #e6eef3; background:#fff; cursor:pointer; }
+

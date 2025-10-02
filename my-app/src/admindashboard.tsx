@@ -85,8 +85,24 @@ export default function AdminDashboard() {
     <div>
       <Header/>
       <div className="admin-dashboard">
+        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '8px 16px', width: '100%' }}>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
+            <button className="primary" onClick={() => {
+            ['access','access_token','refresh','refresh_token','accessToken'].forEach(k => localStorage.removeItem(k));
+            localStorage.removeItem('user_email');
+            localStorage.removeItem('username');
+            localStorage.removeItem('email');
+            try { localStorage.removeItem('is_admin'); } catch (e) {}
+            try { localStorage.removeItem('auth_checked'); } catch (e) {}
+            try { window.dispatchEvent(new Event('auth-changed')); } catch (e) {}
+            navigate('/connect');
+            }}>Déconnecter</button>
+          </div>
+        </div>
         <div className="admin-stats">
-          <h2>Tableau de bord</h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <h2>Tableau de bord</h2>
+          </div>
           <div className="stat-cards">
             <div className="stat-card">
               <div className="stat-number">{loadingStats ? '...' : stats.total}</div>
@@ -105,13 +121,19 @@ export default function AdminDashboard() {
               <div className="stat-label">Résolues</div>
             </div>
           </div>
-          <div style={{ marginTop: 16 }}>
+          <div className="admin-button-row" style={{ marginTop: 16 }}>
             <button className="primary" onClick={() => {
               // scroll to reports list inside AdminSection
               const el = document.getElementById('admin-reports-list');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
               else window.location.hash = '#admin-reports-list';
             }}>Voir toutes les réclamations</button>
+            <button className="secondary" onClick={() => navigate('/admin/users')}>
+              Liste des utilisateurs
+            </button>
+            <button className="secondary" onClick={() => navigate('/admin/agents')}>
+              Gestion des agents
+            </button>
           </div>
         </div>
       </div>

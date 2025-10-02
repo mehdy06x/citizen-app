@@ -1,8 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import Demand from "./demande";
 import './secondsection.css'
 export default function SecondSection(){
+    const navigate = useNavigate();
+    function handleConnect(){
+        const token = localStorage.getItem('access') || localStorage.getItem('access_token') || localStorage.getItem('accessToken');
+        if (!token) { navigate('/connect'); return; }
+        const isAdmin = localStorage.getItem('is_admin') === '1';
+        if (isAdmin) navigate('/admin'); else navigate('/secondpage');
+    }
     return(
         <>
         <div className="sdsection"><Demand/></div>
@@ -17,8 +24,8 @@ export default function SecondSection(){
 
         </div>
         <div className='spcbtns'>
-        <div className='cn'><Link to="/connect"><Button name="Connecter"/></Link></div>
-        <div className='re'><Link to="/register"><Button name="Reclamer"/></Link></div>
+        <div className='cn'><Button name="Connecter" onClick={handleConnect} /></div>
+    <div className='re'><Link to="/register"><Button name="Reclamer"/></Link></div>
         </div>
         </>
     )

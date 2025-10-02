@@ -1,11 +1,11 @@
 import Button from "./Button";
 import './secondsection.css';
-export default function Lampa(props:{text:string}){
+export default function Lampa(props:{title:string,text:string}){
     return(
         <>
         <div className="lamp">
         <div className="sublamp">
-        <h4>Lampadaire</h4>
+        <h4>{props.title}</h4>
         <div className="tbtn">
         <Button name="Terminée"/>
         </div>

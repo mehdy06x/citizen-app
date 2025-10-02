@@ -34,6 +34,7 @@
 .mr-actions button{ padding:10px 16px; border-radius:20px; border:none; cursor:pointer; }
 .mr-actions .mr-submit{ background:#58A0C8; color:#fff; }
 .mr-actions .mr-reset{ background:#f5f5f5; color:#58A0C8; border:1px solid #58A0C8; }
+.mr-actions-center{ justify-content: center; }
 .mr-panel{
   background-image: url('../assets/white.png');
   background-size: cover;
@@ -56,4 +57,27 @@
 	background-image: url("../assets/white.png");
 	background-size: cover;
 	border-radius: 0 50px 50px 0;
+}
+
+/* Stylish location button */
+.btn-location{
+  background: linear-gradient(90deg,#5fb0d6 0%,#4b86b6 100%);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 6px rgba(75,134,182,0.12);
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+}
+.btn-location:hover{ transform: translateY(-1px); box-shadow: 0 6px 12px rgba(75,134,182,0.10); }
+.btn-location:active{ transform: translateY(0); }
+.btn-location:focus{ outline: none; box-shadow: 0 0 0 2px rgba(75,134,182,0.08); }
+
+@media (max-width:480px){
+  .btn-location{ padding:4px 6px; font-size:11px; }
 }

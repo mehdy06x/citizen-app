@@ -38,19 +38,18 @@ export default function Demand(){
             <div className="marg">    <h5> Mises à Jour Récentes des Demandes:</h5>
         </div>
         <div className="update">
-            <Lampa text="Avenue Oak, Près du Parc Lampadaire cassé sur l’Avenue Oak
+            <Lampa title="Lampadaire" text="Avenue Oak, Près du Parc Lampadaire cassé sur l’Avenue Oak
         Dernière Mise à Jour : Lampadaire réparé et testé avec succès"/>
-            
-            <Lampa text="Avenue Oak, Près du Parc Lampadaire cassé sur l’Avenue Oak
-        Dernière Mise à Jour : Lampadaire réparé et testé avec succès"/>
+
+            <Lampa 
+  title="eau" 
+        text="Boulevard Central, près du Café Medina 
+        Fuite d’eau importante signalée 
+        Dernière Mise à Jour : Fuite colmatée et service rétabli"
+/>
     </div>
     <div className="Vp">    <a href="./connect"><Button name="Voir Plus"/></a>
     </div>
-
-
-        
-
-
         </>
     )
 } 

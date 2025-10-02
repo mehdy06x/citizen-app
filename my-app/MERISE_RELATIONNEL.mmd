@@ -1,0 +1,32 @@
+classDiagram
+  class AUTH_USER {
+    +int id
+    +string username
+    +string email
+  }
+  class CUSTOM_TYPE {
+    +int id
+    +string name
+    +datetime created_at
+  }
+  class RECLAMATION {
+    +int id
+    +int user_id
+    +int custom_type_id
+    +text content
+    +string location
+    +string status
+    +datetime created_at
+    +datetime updated_at
+    +boolean is_deleted
+  }
+  class PHOTO {
+    +int id
+    +int reclamation_id
+    +string file_path
+    +datetime uploaded_at
+  }
+
+  AUTH_USER "1" -- "*" RECLAMATION : owns
+  CUSTOM_TYPE "1" -- "*" RECLAMATION : classifies
+  RECLAMATION "1" -- "*" PHOTO : has

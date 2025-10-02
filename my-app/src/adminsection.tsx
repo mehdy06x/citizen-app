@@ -11,6 +11,8 @@ type RemoteReport = {
   type?: string;
   content: string;
   author_username?: string;
+  created_at?: string;
+  created?: string;
 };
 
 const API_BASE = 'http://localhost:8000/api';
@@ -37,6 +39,25 @@ export default function AdminSection() {
     }
   }, [token]);
 
+  // keep token state in sync with storage and auth events
+  useEffect(() => {
+    function onAuthChanged() {
+      const possibleKeys = ['access', 'access_token', 'accessToken'];
+      let found: string | null = null;
+      for (const k of possibleKeys) {
+        const t = localStorage.getItem(k);
+        if (t) { found = t; break; }
+      }
+      setToken(found);
+    }
+    window.addEventListener('storage', onAuthChanged);
+    window.addEventListener('auth-changed', onAuthChanged);
+    return () => {
+      window.removeEventListener('storage', onAuthChanged);
+      window.removeEventListener('auth-changed', onAuthChanged);
+    };
+  }, []);
+
   async function fetchReports() {
     if (!token) return;
     try {
@@ -60,12 +81,12 @@ export default function AdminSection() {
   }
 
   const STATUS_LABELS: Record<string, string> = {
-    'nouvelle': 'Pas encore',
+  'nouvelle': 'suspendu',
     'en progress': 'En cours de',
     'solved': 'Résolue'
   };
   const LABEL_TO_VALUE: Record<string, string> = {
-    'Pas encore': 'nouvelle',
+  'suspendu': 'nouvelle',
     'En cours de': 'en progress',
     'Résolue': 'solved'
   };
@@ -94,13 +115,10 @@ export default function AdminSection() {
     }
   }
 
-  function logout() {
-    ['access', 'access_token', 'refresh', 'refresh_token', 'accessToken'].forEach(k => localStorage.removeItem(k));
-    setToken(null);
-    navigate('/connect');
-  }
+  // logout is handled by the global AuthButton
 
-  const filteredReports = filter === 'all' ? reports : reports.filter(r => r.status === filter);
+  const filteredReports = filter === 'all' ? reports.slice() : reports.filter(r => r.status === filter);
+  // no sorting UI — keep original fetch order or server-provided ordering
 
   return (
     <>
@@ -117,28 +135,40 @@ export default function AdminSection() {
           </div>
         )}
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div className="filter-reports">
             <button className={"filter-tout" + (filter === "all" ? " active" : "")} onClick={() => setFilter("all")}>Tout</button>
             <button className={"filter-encours" + (filter === "en progress" ? " active" : "")} onClick={() => setFilter("en progress")}>{STATUS_LABELS['en progress']}</button>
             <button className={"filter-resolue" + (filter === "solved" ? " active" : "")} onClick={() => setFilter("solved")}>{STATUS_LABELS['solved']}</button>
             <button className={"filter-pasencore" + (filter === "nouvelle" ? " active" : "")} onClick={() => setFilter("nouvelle")}>{STATUS_LABELS['nouvelle']}</button>
           </div>
-          <div>
-            {token ? <button onClick={logout}>Logout</button> : null}
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <div>
+              {/* auth control removed per request */}
+            </div>
           </div>
         </div>
 
   <div id="admin-reports-list">
     {filteredReports.map(r => (
-      <ChangeEtat
+  <ChangeEtat
         key={r.id}
         id={r.id}
         etat={r.status}
-        type={r.type}
+  type={r.type}
+  custom_type={(r as any).custom_type}
         content={r.content}
         // @ts-ignore
         author={r.author_username}
+        photo={(r as any).photo}
+        location={(r as any).location}
+        rating={(r as any).rating}
+        rating_comment={(r as any).rating_comment}
+        rating_submitted_at={(r as any).rating_submitted_at}
+        admin={true}
+        assigned_agent_email={(r as any).assigned_agent_email}
+        onDelete={(id:number) => setReports(rs => rs.filter(x => x.id !== id))}
+        created_at={r.created_at || r.created}
         onStatusChange={newStatus => handleStatusChange(r.id, newStatus)}
       />
     ))}

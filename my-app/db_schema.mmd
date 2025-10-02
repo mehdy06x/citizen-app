@@ -1,0 +1,33 @@
+erDiagram
+  AUTH_USER {
+    int id PK
+    string username
+    string email
+  }
+  CUSTOM_TYPE {
+    int id PK
+    string name
+    datetime created_at
+  }
+  RECLAMATION {
+    int id PK
+    int user_id FK
+    int custom_type_id FK
+    text content
+    string location
+    string status
+    datetime created_at
+    datetime updated_at
+    boolean is_deleted
+  }
+  PHOTO {
+    int id PK
+    int reclamation_id FK
+    string file_path
+    datetime uploaded_at
+  }
+
+  AUTH_USER ||--o{ RECLAMATION : owns
+  CUSTOM_TYPE ||--o{ RECLAMATION : classifies
+  RECLAMATION ||--o{ PHOTO : has
+

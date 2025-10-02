@@ -1,0 +1,23 @@
+graph LR
+  Browser[Browser] --> Frontend[Frontend React + Vite]
+  Frontend --> Token[POST_api_token]
+  Frontend --> Me[GET_api_users_me]
+  Frontend --> Recs[POST_GET_api_reclamations]
+
+  Token --> API[API Django]
+  Me --> API
+  Recs --> API
+
+  API --> DB[Database SQLite]
+  API --> Media[Media storage]
+  API --> Admin[Admin UI]
+
+  Frontend --> Static[Static files]
+
+  Frontend -.-> LocalStorage[localStorage]
+  LocalStorage --> Frontend
+
+  %% Notes
+  %% - Frontend stores tokens in localStorage and sends Authorization header
+  %% - Admin UI and API share the backend; users call endpoints via the API
+

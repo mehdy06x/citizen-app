@@ -1,0 +1,32 @@
+erDiagram
+  AUTH_USER {
+    INTEGER id PK "Django auth_user.id"
+    STRING username
+    STRING email
+  }
+  CUSTOM_TYPE {
+    INTEGER id PK
+    TEXT name
+    DATETIME created_at
+  }
+  RECLAMATION {
+    INTEGER id PK
+    INTEGER user_id FK
+    INTEGER custom_type_id FK
+    TEXT content
+    TEXT location
+    TEXT status
+    DATETIME created_at
+    DATETIME updated_at
+    BOOLEAN is_deleted
+  }
+  PHOTO {
+    INTEGER id PK
+    INTEGER reclamation_id FK
+    TEXT file_path
+    DATETIME uploaded_at
+  }
+
+  AUTH_USER ||--o{ RECLAMATION : "owns"
+  CUSTOM_TYPE ||--o{ RECLAMATION : "classifies"
+  RECLAMATION ||--o{ PHOTO : "has"

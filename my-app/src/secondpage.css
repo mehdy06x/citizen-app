@@ -1,8 +1,6 @@
 
 
-body {
-  background-image: url("./images/backBleu.png");
-}
+/* body background removed to avoid global image on non-landing pages */
 
 .aligning-buttons {
   display: flex;
@@ -82,15 +80,37 @@ background: #58A0C859;
 /*this part is the lamptout component styling */
 
 .bgcolor{
-  background-color: #F5F5F5;  
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  height:120px;
+  /* show body background (backBleu) behind reclamation cards */
+  background-color: transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  min-height:160px;
   padding-right:0 ;
   padding-left: 0;
   margin-right: clamp(6px, 3vw, 20px);
   margin-left: clamp(6px, 6vw, 40px);
   margin-top: 10px;
   border-radius: 10px;
+}
+
+/* layout for cards that include a small photo thumbnail */
+.card-thumb{ width:120px; height:80px; object-fit:cover; border-radius:8px; background-color: transparent; }
+.centered-thumb{ width:100px; height:70px; }
+.lamptout{ padding:12px 16px; }
+
+/* Ensure thumbnails align to the start of the card, not centered */
+.lamptout .card-thumb, .Reclamation-photo, .card-row img.card-thumb { margin-left: 16px; margin-right: 12px; }
+
+/* two-column layout for report cards: text on left, image on right */
+.card-row{ display:flex; gap:16px; align-items:flex-start; }
+.card-left{ width:140px; flex-shrink:0; }
+.card-right{ flex:1; min-width:0; display:flex; align-items:flex-start; justify-content:flex-start; }
+.card-text p{ margin:6px 0; }
+
+/* small screens: stack vertically with image below or above depending on preference */
+@media (max-width: 600px) {
+  .card-row{ flex-direction:column; }
+  .card-right{ width:100%; }
+  .card-thumb{ width:100%; height:auto; max-height:220px; object-fit:cover; }
 }
 
 .bold{
@@ -100,7 +120,9 @@ background: #58A0C859;
 .lampbutton{
   margin-left: clamp(6px, 4vw, 25px);
   display: flex;
-  justify-content:space-between; 
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 0;
   padding-bottom: 0;
   margin-top: 0;
@@ -164,8 +186,8 @@ background: #58A0C859;
 .lamptout p{
   justify-content: flex-start;
   margin-left: 26px;
-  margin-top: 0;
-  margin-bottom: 2px;
+  margin-top: 4px;
+  margin-bottom: 6px;
 }
 
   

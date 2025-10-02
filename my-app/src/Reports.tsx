@@ -30,7 +30,7 @@ export default function Reports() {
           <p>Suivez l'état de vos demandes soumises</p>
         </div>
         <div className="nreclbtn">
-          <button onClick={() => navigate('/make-report')} className="custom-link">Nouvelle Reclamation</button>
+          <button onClick={() => navigate('/make-report', { state: { fromSecondPage: true } })} className="custom-link">Nouvelle Reclamation</button>
         </div>
       </div>
 
@@ -47,9 +47,16 @@ export default function Reports() {
               <ChangeEtat
                 id={r.id}
                 etat={r.status || r.etat || r.state || r.status_label}
+                photo={r.photo}
+                location={r.location}
                 type={r.type}
+                custom_type={(r as any).custom_type}
                 content={r.description || r.content}
                 author={r.author || r.username}
+                created_at={r.created_at || r.created}
+                rating={(r as any).rating}
+                rating_comment={(r as any).rating_comment}
+                rating_submitted_at={(r as any).rating_submitted_at}
                 editable={false}
                 onStatusChange={async () => { /* no-op */ }}
               />

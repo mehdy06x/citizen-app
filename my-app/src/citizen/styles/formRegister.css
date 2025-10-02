@@ -76,6 +76,11 @@ body{
 	font-size: 15px;
 	color: #58A0C8;
 	margin-bottom: 5px;
+	/* align label text to the left so it lines up with the input placeholder */
+	text-align: left;
+	/* match the horizontal spacing inside the input so label and placeholder align */
+	padding: 0 10px;
+	box-sizing: border-box;
 }
 .rform-input{
 	width: 100%;
