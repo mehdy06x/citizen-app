@@ -38,7 +38,7 @@ function FormLogin({route, method}) {
             <div className="rform-container">
                 <h1 className="rtitle">Se Connecter</h1>
                 <form onSubmit={handleSubmit} >
-                            <p className="rform-label">Nom Complet:</p>
+                            <p className="rform-label">email (ou Nom Complet:)</p>
                             <input 
                             className="rform-input"
                             type="text"

@@ -16,15 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api.views import CreateUserView, CreateUserRegistrationView
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from api.views import CreateUserView, CreateUserRegistrationView, CustomTokenObtainPairView
+from rest_framework_simplejwt.views import TokenRefreshView
 from api.urls import urlpatterns as api_urls
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/register/', CreateUserRegistrationView.as_view(), name='register'),
-    path('api/token/', TokenObtainPairView.as_view(), name='get_token'),
+    path('api/token/', CustomTokenObtainPairView.as_view(), name='get_token'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='refresh_token'),   
     path('api-auth/', include('rest_framework.urls')),  # For browsable API authentication
     path('api/', include(api_urls)),  # Include the API URLs
-      # Include the API URLs for root path
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
